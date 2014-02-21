@@ -17,7 +17,8 @@
 		$_SESSION['sessionusername'] = $result['username'];
 		$_SESSION['sessionname'] = $result['name'];
 		$_SESSION['sessionlevel'] = $result['priority'];
-		echo"<meta http-equiv='refresh' content=;0;URL=Login_Success.php'>";
+		//echo"<meta http-equiv='refresh' content=;0;URL=Login_Success.php'>";
+		header('Location:Login_Success.php');
 		exit;
 	}else {
 		echo "錯誤的帳號或密碼";

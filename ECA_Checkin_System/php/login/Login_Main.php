@@ -1,3 +1,18 @@
+<?php
+	session_start(); 
+	if(!empty($_SESSION['sessionusername'])){
+		if($_SESSION['sessionlevel'] > 2){
+			//echo "<meta http-equiv='refresh' content=;0;URL＝../general/GeneralUserIndex.php'>";
+			//echo 'general';
+			header('Location:../general/GeneralUserIndex.php');
+		}else {
+			//echo "<meta http-equiv='refresh' content=;0;URL=../admin/AdminIndex.php'>";
+			//echo 'admin';
+			header('Location:../admin/AdminIndex.php');
+		}
+	}
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

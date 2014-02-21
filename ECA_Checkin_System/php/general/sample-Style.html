@@ -1,11 +1,3 @@
-<?php 
-	session_start();
-	if(empty($_SESSION['sessionusername']) || $_SESSION['sessionlevel'] > 3){
-		echo "尚未登入或無權限觀看此頁面，3秒後跳轉回首頁。";
-		echo"<meta http-equiv='refresh' content='3;URL=../../index.php'>";
-		exit;
-	}
-?>
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -27,13 +19,13 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<!-- other CSS -->
-	<link rel="stylesheet" type="text/css" href="../../css/style.css">
+
 
 	<!-- jQuery -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<!-- 	<link rel="stylesheet" href="/resources/demos/style.css"> -->
+	<link rel="stylesheet" href="/resources/demos/style.css">
 <!-- 
 	<script>
 		$(function() {
@@ -67,16 +59,11 @@
  			</tbody>
  		</table>
  -->
+ 	<div class="container">
 		<div class="jumbotron">
-			<div class="row">
-				<div class="col-md-8">
-	  				<h1>PM 11:30:44</h1>
-				</div>
-  				<div class="col-md-4">
-  					<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check in</a></p>
-  					<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check out</a></p>  				
-  				</div>
-			</div>
+			<h1>PM 11:50:55</h1>
+			<p>...</p>
+			<p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
 		</div>
 	</div>    
 </div> 
