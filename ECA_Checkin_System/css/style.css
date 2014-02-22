@@ -22,3 +22,17 @@ body {
 	border-bottom-right-radius: 4px;
 	padding: 10px;
 }
+
+#datepicker-parent {
+	border:1px solid black;
+	margin: 0 auto;
+	display: table;
+}
+
+
+#datepicker {
+	padding-right: 0;
+	display: table-cell;
+	margin: 0 auto;
+	text-align: center;
+}

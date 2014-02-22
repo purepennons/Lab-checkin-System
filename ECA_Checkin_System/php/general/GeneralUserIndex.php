@@ -35,19 +35,11 @@
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 
 <!-- 	<link rel="stylesheet" href="/resources/demos/style.css"> -->
-<!-- 
-	<script>
-		$(function() {
-			$( "#datepicker" ).datepicker();
-		});
-	</script>
- -->
 </head>
 <body>
 	<div class="container">
 <!-- 		<a href="../login/Logout.php">登出</a>
- --><!-- 		<p>Date: <input type="text" id="datepicker"></p>
- -->
+ --><!-- 		 -->
 <!--  		<table class="table">
  			<thead>
  				<tr>
@@ -67,12 +59,14 @@
  				</tr>
  			</tbody>
  		</table>
+
  -->
+ 		<p class="text-right" ><a href="../login/Logout.php">登出</a></p>
  		<div class="content">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="col-md-8">
-	  				<h1>PM 11:30:44</h1>
+	  				<h1 id="system-time"></h1>
 					</div>
   					<div class="col-md-4">
 	  					<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check in</a></p>
@@ -80,7 +74,7 @@
   					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" id="bottom-content">
 				<div id="record-content">
 					<div class="col-md-8">
       					<ul id="eca-tabs" class="nav nav-tabs">
@@ -101,11 +95,18 @@
       					</div>
 					</div>
 					<div class="col-md-4">
+						<div id="datepicker-parent">
+							<div id="datepicker"></div>
+							<script>
+								$( "#datepicker" ).datepicker();
+							</script>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>    
 </div> 
+<script type="text/javascript" src="../../js/action.js"></script>
 </body>
 </html>
