@@ -66,7 +66,8 @@
 			<div class="jumbotron">
 				<div class="row">
 					<div class="col-md-8">
-	  				<h1 id="system-time"></h1>
+						<h2 id="system-date"></h2>
+	  					<h1 id="system-time"></h1>
 					</div>
   					<div class="col-md-4">
 	  					<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check in</a></p>
