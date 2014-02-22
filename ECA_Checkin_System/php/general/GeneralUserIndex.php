@@ -20,6 +20,11 @@
     </script>
     <![endif]-->
 
+	<!-- jQuery -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
     <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<!-- Optional theme -->
@@ -29,10 +34,6 @@
 	<!-- other CSS -->
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 
-	<!-- jQuery -->
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <!-- 	<link rel="stylesheet" href="/resources/demos/style.css"> -->
 <!-- 
 	<script>
@@ -67,15 +68,41 @@
  			</tbody>
  		</table>
  -->
-		<div class="jumbotron">
-			<div class="row">
-				<div class="col-md-8">
+ 		<div class="content">
+			<div class="jumbotron">
+				<div class="row">
+					<div class="col-md-8">
 	  				<h1>PM 11:30:44</h1>
+					</div>
+  					<div class="col-md-4">
+	  					<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check in</a></p>
+  						<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check out</a></p>  				
+  					</div>
 				</div>
-  				<div class="col-md-4">
-  					<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check in</a></p>
-  					<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check out</a></p>  				
-  				</div>
+			</div>
+			<div class="row">
+				<div id="record-content">
+					<div class="col-md-8">
+      					<ul id="eca-tabs" class="nav nav-tabs">
+        					<li class="active"><a href="#today-records" data-toggle="tab">今日記錄</a></li>
+        					<li><a href="#week-records" data-toggle="tab">一週記錄</a></li>
+        					<li><a href="#leave" data-toggle="tab">請假</a></li>
+        				</ul>
+      					<div id="eca-tabs-content" class="tab-content">
+        					<div class="tab-pane fade in active" id="today-records">
+          						<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        					</div>
+        					<div class="tab-pane fade" id="week-records">
+          						<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        					</div>
+        					<div class="tab-pane fade" id="leave">
+          						<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        					</div>
+      					</div>
+					</div>
+					<div class="col-md-4">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>    
