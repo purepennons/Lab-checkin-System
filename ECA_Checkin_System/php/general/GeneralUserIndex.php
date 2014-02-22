@@ -61,7 +61,7 @@
  		</table>
 
  -->
- 		<p class="text-right" ><a href="../login/Logout.php">登出</a></p>
+ 		<p class="text-right" >當前使用者：<?php echo $_SESSION['sessionusername']?>&nbsp&nbsp<a href="../login/Logout.php">登出</a></p>
  		<div class="content">
 			<div class="jumbotron">
 				<div class="row">

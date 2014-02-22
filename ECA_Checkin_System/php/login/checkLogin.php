@@ -31,7 +31,7 @@
 		header('Location:Login_Success.php');
 		exit;
 	}else {
-		echo "錯誤的帳號或密碼";
+		echo "<script>alert('錯誤的帳號或密碼')</script>";
 		echo "<script>document.location.href='../../index.php'</script>";
 		exit;
 	}
