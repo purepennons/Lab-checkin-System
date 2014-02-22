@@ -70,8 +70,18 @@
 	  					<h1 id="system-time"></h1>
 					</div>
   					<div class="col-md-4">
-	  					<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check in</a></p>
-  						<p><a class="btn btn-primary btn-lg btn-block pull-right" role="button">Check out</a></p>  				
+	  					<p>
+	  						<a class="btn btn-warning btn-lg btn-block pull-right" role="button" href="checkin.php">
+	  							Check in
+	  							<span class="glyphicon glyphicon-info-sign"></span>
+	  						</a>
+	  					</p>
+  						<p>
+  							<a class="btn btn btn-info btn-lg btn-block pull-right" role="button" disabled="disabled">
+  								Check out
+								<span class="glyphicon glyphicon-ban-circle"></span>
+  							</a>
+  						</p>  				
   					</div>
 				</div>
 			</div>

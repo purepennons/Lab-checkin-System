@@ -24,7 +24,6 @@ body {
 }
 
 #datepicker-parent {
-	border:1px solid black;
 	margin: 0 auto;
 	display: table;
 }

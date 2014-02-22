@@ -17,10 +17,22 @@
 		$_SESSION['sessionusername'] = $result['username'];
 		$_SESSION['sessionname'] = $result['name'];
 		$_SESSION['sessionlevel'] = $result['priority'];
+		//真實ip判別，但不確定
+		// if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+		//   		$myip = $_SERVER['HTTP_CLIENT_IP'];
+			// }else if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+			//   		$myip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+			// }else{
+			//   		$myip= $_SERVER['REMOTE_ADDR'];
+			// }
+			// echo $myip;
+		$_SESSION['sessionUserIP'] = $_SERVER['REMOTE_ADDR'];  //代理無效
 		//echo"<meta http-equiv='refresh' content=;0;URL=Login_Success.php'>";
 		header('Location:Login_Success.php');
 		exit;
 	}else {
 		echo "錯誤的帳號或密碼";
+		echo "<script>document.location.href='../../index.php'</script>";
+		exit;
 	}
 ?>

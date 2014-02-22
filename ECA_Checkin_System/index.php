@@ -48,10 +48,10 @@
     		<h2 class="form-signin-heading">Please sign in.</h2>
     		<input name="username" id="username" type="text" class="form-control" placeholder="Username" required autofocus>
     		<input name="password" id="password" type="password" class="form-control" placeholder="Password" required>
-    		<label class="checkbox">
+<!--     		<label class="checkbox">
         		<input type="checkbox" value="remember-me"> Remember me
         	</label>
-        	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+ -->        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
     </div> 
 </body>
