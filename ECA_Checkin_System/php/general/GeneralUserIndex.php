@@ -5,6 +5,14 @@
 		echo"<meta http-equiv='refresh' content='3;URL=../../index.php'>";
 		exit;
 	}
+	include_once(realpath("../DB_Conf.php"));
+	include_once(realpath("../DB_Class.php"));
+	$db = new DB();
+	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
+	$sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3)", $_SESSION['sessionusername']);
+	$db->query($sql);
+	$result = $db->fetch_array();
+	$checkStatus = $result['status'];
 ?>
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -70,17 +78,21 @@
 	  					<h1 id="system-time"></h1>
 					</div>
   					<div class="col-md-4">
-	  					<p>
-	  						<a class="btn btn-warning btn-lg btn-block pull-right" role="button" href="checkin.php">
-	  							Check in
-	  							<span class="glyphicon glyphicon-info-sign"></span>
-	  						</a>
-	  					</p>
+	    				<?php 
+	  						if($checkStatus!=1){
+								echo '<p><a class="btn btn-lg btn-block btn-warning pull-right" role="button" href="checkin.php">Check in&nbsp <span class="glyphicon glyphicon-info-sign"></span>
+	  					</a></p>';
+								echo '<p><a class="btn btn btn-info btn-lg btn-block pull-right" role="button" disabled="disabled">
+  								Check out&nbsp <span class="glyphicon glyphicon-ban-circle"></span></a></p>';
+							}else {
+								echo '<a class="btn btn-lg btn-block btn-success pull-right" role="button" disabled="disabled" href="checkin.php">Check in&nbsp <span class="glyphicon glyphicon-ok-sign"></span>
+	  					</a>';
+								echo '<p><a class="btn btn btn-lg btn-block btn-warning pull-right" role="button">
+  								Check out&nbsp <span class="glyphicon glyphicon-info-sign"></span></a></p>';
+							}
+	  					?>
   						<p>
-  							<a class="btn btn btn-info btn-lg btn-block pull-right" role="button" disabled="disabled">
-  								Check out
-								<span class="glyphicon glyphicon-ban-circle"></span>
-  							</a>
+
   						</p>  				
   					</div>
 				</div>
