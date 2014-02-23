@@ -10,7 +10,7 @@
 	include_once(realpath("../DB_Class.php"));
 	$db = new DB();
 	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-	$sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3)", $_SESSION['sessionusername']);
+	$sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3)", mysql_real_escape_string($_SESSION['sessionusername']));
 	$db->query($sql);
 	$result = $db->fetch_array();
 	$checkStatus = $result['status'];
