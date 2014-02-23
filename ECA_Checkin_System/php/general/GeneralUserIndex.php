@@ -6,13 +6,6 @@
 		exit;
 	}
 
-	if(empty($_SESSION['sessiondate'])){
-		$sql = sprintf("SELECT curdate()");
-		$db->query($sql);
-		$result = $db->fetch_array();
-		$_SESSION['sessiondate'] = $result[0];
-	}
-
 	include_once(realpath("../DB_Conf.php"));
 	include_once(realpath("../DB_Class.php"));
 	$db = new DB();
@@ -21,6 +14,14 @@
 	$db->query($sql);
 	$result = $db->fetch_array();
 	$checkStatus = $result['status'];
+
+	if(empty($_SESSION['sessiondate'])){
+		$sql = sprintf("SELECT curdate()");
+		$db->query($sql);
+		$result = $db->fetch_array();
+		$_SESSION['sessiondate'] = $result[0];
+	}
+
 
 ?>
 <!DOCTYPE html>
@@ -127,19 +128,20 @@
         									$sql = sprintf("SELECT * FROM `RECORD` WHERE username='%s' AND record_date='%s'", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessiondate']));
         									$db->query($sql);
         									$counter = 0;
-        									// while($result = $db->fetch_array()){
-        									// 	$counter++;
-        									// 	$statusText = array('Check in', 'Check out', 'Leave');
-        									// 	echo 
-        									// 	'<tr>
-        									// 			<td>' .$counter.   '</td>'
-        									// 		  .'<td>' .$statusText[1]. '</td>'
-        									// 		  .'<td>' .$result[4]. '</td>'
-        									// 		  .'<td>' .$result[5]. '</td>'
-        									// 		  .'<td>' .$result[6]. '</td>'
-        									// 		  .'<td>' .$result[3]. '</td>'        					
-        									// 	 . '</tr>';
-        									// }
+        									while($result = $db->fetch_array()){
+        										$counter++;
+        										$statusText = array('Check in', 'Check out', 'Leave');
+        										$statusNum = $result[3] -1;
+        										echo 
+        										'<tr>
+        												<td>' .$counter.   '</td>'
+        											  .'<td>' .$statusText[$statusNum]. '</td>'
+        											  .'<td>' .$result[4]. '</td>'
+        											  .'<td>' .$result[5]. '</td>'
+        											  .'<td>' .$result[6]. '</td>'
+        											  .'<td>' .$result[3]. '</td>'        					
+        										 . '</tr>';
+        									}
         								?>
         							</tbody>
         						</table>
