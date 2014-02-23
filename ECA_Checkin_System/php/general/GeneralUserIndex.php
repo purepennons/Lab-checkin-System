@@ -138,6 +138,7 @@
 							<button class="btn btn-lg btn-success btn-block input-components" type="submit" value="leave">
 								<span class="glyphicon glyphicon-pushpin"></span>									
 								請假
+								test
 							</button>
  						</form>
 					</div>
