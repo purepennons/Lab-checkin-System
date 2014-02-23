@@ -1,3 +1,9 @@
+//jQuery datepicker
+$(function() {
+    $("#datepicker").datepicker({ dateFormat: "yy-mm-dd" });
+});
+
+
 //系統時間取得
 var clockStart = setInterval(function(){getCurTime()},1000);
 

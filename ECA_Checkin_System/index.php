@@ -53,6 +53,13 @@
         	</label>
  -->        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
+    </div>
+    <div class="container" id="footer">
+    	<div class="row">
+            <hr>
+            <p class="text-right">2014 ECA LAB 使用<a target="_blank" href="http://getbootstrap.com">Bootstrap.</a>製作</p>
+            <p class="text-right">建議使用<a target="_blank" href="https://www.google.com/intl/zh-TW/chrome/">Chrome</a>、<a target="_blank" href="http://moztw.org/firefox/">Firefox</a>或Internet Explorer 9 以上的瀏覽器瀏覽，以達最佳的瀏覽體驗。</p>
+        </div>
     </div> 
 </body>
 </html>
