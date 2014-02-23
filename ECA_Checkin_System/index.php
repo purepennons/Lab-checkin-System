@@ -45,7 +45,7 @@
 <body>
 	<div class="container">
     	<form class="form-signin" role="form" name="loginForm" method="post" action="php/login/checkLogin.php">
-    		<h2 class="form-signin-heading">Please sign in.</h2>
+    		<h2 class="form-signin-heading"><p>ECA LAB</p> <p>Check in System</p></h2>
     		<input name="username" id="username" type="text" class="form-control" placeholder="Username" required autofocus>
     		<input name="password" id="password" type="password" class="form-control" placeholder="Password" required>
 <!--     		<label class="checkbox">

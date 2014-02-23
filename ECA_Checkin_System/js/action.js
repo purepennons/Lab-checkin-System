@@ -23,10 +23,10 @@ function getCurTime() {
 		m = 'PM';
 		currentHours = currentHours - 12;
 	}
-	currentHours = (currentHours / 10) > 1 ? currentHours : '0' + currentHours.toString();
-	currentMins = (currentMins / 10) > 1 ? currentMins : '0' + currentMins.toString();
-	currentSec = (currentSec / 10) > 1 ? currentSec : '0' + currentSec.toString();
-	date = (date / 10) > 1 ? date : '0' + date.toString();
+	currentHours = (currentHours / 10) >= 1 ? currentHours : '0' + currentHours.toString();
+	currentMins = (currentMins / 10) >= 1 ? currentMins : '0' + currentMins.toString();
+	currentSec = (currentSec / 10) >= 1 ? currentSec : '0' + currentSec.toString();
+	date = (date / 10) >= 1 ? date : '0' + date.toString();
 	//var t = currentTime.toLocaleTimeString();
  	//systemTime.innerHTML = t;
  	systemTime.innerHTML = m + ' ' + currentHours + ':' + currentMins + ':' + currentSec;

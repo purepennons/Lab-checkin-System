@@ -5,6 +5,7 @@
 		echo"<meta http-equiv='refresh' content='3;URL=../../index.php'>";
 		exit;
 	}
+
 	include_once(realpath("../DB_Conf.php"));
 	include_once(realpath("../DB_Class.php"));
 	$db = new DB();
@@ -13,6 +14,14 @@
 	$db->query($sql);
 	$result = $db->fetch_array();
 	$checkStatus = $result['status'];
+
+
+	if(empty($_SESSION['sessiondate'])){
+		$sql = sprintf("SELECT curdate()");
+		$db->query($sql);
+		$result = $db->fetch_array();
+		$_SESSION['sessiondate'] = $result[0];
+	}
 ?>
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -125,21 +134,20 @@
 							</script>
 						</div>
  -->				
- 						<form class="form-leave" role="form" name="leaveForm" method="post" action="leave.php">
-							<textarea class="form-control input-components" rows="5" placeholder="請假事由：" id="leave-textarea"></textarea>
+ 						<form class="form-leave" role="form" name="leaveForm" method="post" action="leaveOrSearch.php">
+							<textarea class="form-control input-components" rows="5" placeholder="請假事由：" id="leave-textarea" name="leave-textarea" value=""></textarea>
 							<div class="input-group input-components">
   								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-								<input class="form-control" placeholder="選擇請假日期或記錄時間" type="text" id="datepicker">
+								<input class="form-control" placeholder="選擇請假日期或記錄時間" type="text" id="datepicker" name="datepicker" value="">
 							</div>
-							<button class="btn btn-lg btn-info btn-block input-components" type="submit" value="search">
-								<span class="glyphicon glyphicon-search"></span>									
-								查詢
+							<button class="btn btn-lg btn-info btn-block input-components" type="submit" name="leave-search" id="search-button" value="search">
+								<span class="glyphicon glyphicon-search"></span>
+								查詢									
 							</button>
-							<button class="btn btn-lg btn-success btn-block input-components" type="submit" value="leave">
-								<span class="glyphicon glyphicon-pushpin"></span>									
-								請假
-								test
-							</button>
+							<button class="btn btn-lg btn-success btn-block input-components" type="submit" name="leave-search" id="leave-button" value="leave">
+								<span class="glyphicon glyphicon-pushpin"></span>
+								請假									
+ 							</button>
  						</form>
 					</div>
 				</div>
