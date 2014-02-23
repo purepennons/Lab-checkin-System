@@ -18,8 +18,7 @@
 	$chooseDate = $_POST['datepicker'];
 	$leaveText = $_POST['leave-textarea'];
 	if($buttonFlag=='search'){
-		$_SESSION['sessiondate'];
-		echo "<script>alert('search')</script>";
+		$_SESSION['sessiondate'] = $chooseDate;
 		
 	}else if($buttonFlag=='leave'){
 		if(empty($_POST['leave-textarea']) || empty($_POST['datepicker'])){

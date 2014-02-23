@@ -6,6 +6,13 @@
 		exit;
 	}
 
+	if(empty($_SESSION['sessiondate'])){
+		$sql = sprintf("SELECT curdate()");
+		$db->query($sql);
+		$result = $db->fetch_array();
+		$_SESSION['sessiondate'] = $result[0];
+	}
+
 	include_once(realpath("../DB_Conf.php"));
 	include_once(realpath("../DB_Class.php"));
 	$db = new DB();
@@ -15,13 +22,6 @@
 	$result = $db->fetch_array();
 	$checkStatus = $result['status'];
 
-
-	if(empty($_SESSION['sessiondate'])){
-		$sql = sprintf("SELECT curdate()");
-		$db->query($sql);
-		$result = $db->fetch_array();
-		$_SESSION['sessiondate'] = $result[0];
-	}
 ?>
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -116,7 +116,33 @@
         				</ul>
       					<div id="eca-tabs-content" class="tab-content">
         					<div class="tab-pane fade in active" id="today-records">
-          						<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        						<table class="table">
+        							<thead>
+        								<tr>
+        									<th>＃</th><th>狀態</th><th>記錄日期</th><th>記錄時間</th><th>登入IP</th><th>請假日期</th>
+        								</tr>
+        							</thead>
+        							<tbody>
+        								<?php
+        									$sql = sprintf("SELECT * FROM `RECORD` WHERE username='%s' AND record_date='%s'", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessiondate']));
+        									$db->query($sql);
+        									$counter = 0;
+        									// while($result = $db->fetch_array()){
+        									// 	$counter++;
+        									// 	$statusText = array('Check in', 'Check out', 'Leave');
+        									// 	echo 
+        									// 	'<tr>
+        									// 			<td>' .$counter.   '</td>'
+        									// 		  .'<td>' .$statusText[1]. '</td>'
+        									// 		  .'<td>' .$result[4]. '</td>'
+        									// 		  .'<td>' .$result[5]. '</td>'
+        									// 		  .'<td>' .$result[6]. '</td>'
+        									// 		  .'<td>' .$result[3]. '</td>'        					
+        									// 	 . '</tr>';
+        									// }
+        								?>
+        							</tbody>
+        						</table>
         					</div>
         					<div class="tab-pane fade" id="week-records">
           						<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
@@ -127,13 +153,6 @@
       					</div>
 					</div>
 					<div class="col-md-4">
-<!-- 						<div id="datepicker-parent">
-							<div id="datepicker"></div>
-							<script>
-								$( "#datepicker" ).datepicker();
-							</script>
-						</div>
- -->				
  						<form class="form-leave" role="form" name="leaveForm" method="post" action="leaveOrSearch.php">
 							<textarea class="form-control input-components" rows="5" placeholder="請假事由：" id="leave-textarea" name="leave-textarea" value=""></textarea>
 							<div class="input-group input-components">
