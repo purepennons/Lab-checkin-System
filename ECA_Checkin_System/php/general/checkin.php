@@ -19,7 +19,6 @@
     $db->query($sql);
     $result = $db->fetch_array();
     $name = $result['name'];
-    //找出當天時間最新的特定會員資料 且status!=3
     $sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3)", $_SESSION['sessionusername']);
     $db->query($sql);
     $result = $db->fetch_array();
@@ -28,12 +27,9 @@
  		$sql = sprintf("INSERT INTO RECORD(username, name, status, record_date, record_time, ip) VALUES ('%s','%s', '%d', curdate(), curtime(), '%s')", 
  				mysql_real_escape_string($_SESSION['sessionusername']), $name, 1, $_SESSION['sessionUserIP']);
  		$flag = $db->query($sql);
- 		echo "<script>alert('Check in!')</script>";
- 		echo "<script>document.location.href='GeneralUserIndex.php'</script>";
- 		exit;
 	}else {
-		echo "<script>alert('你今天已經Check in, 請先Check out後，才可以再次Check in。')</script>";
-		echo "<script>document.location.href='GeneralUserIndex.php'</script>";
+		echo "<script>alert('你今天已經Check in, 請先Check out後，才可以次Check in。')</script>";
+		echo "<script>document.location.href='../../index.php'</script>";
 		exit;
 	}
 ?>
