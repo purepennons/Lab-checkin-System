@@ -69,7 +69,7 @@
  		</table>
 
  -->
- 		<p class="text-right" >當前使用者：<?php echo $_SESSION['sessionusername']?>&nbsp&nbsp<a href="../login/Logout.php">登出</a></p>
+ 		<p class="text-right" >當前使用者：<?php echo $_SESSION['sessionname']?> &nbsp&nbsp<a href="../login/Logout.php">登出</a></p>
  		<div class="content">
 			<div class="jumbotron">
 				<div class="row">
@@ -80,15 +80,15 @@
   					<div class="col-md-4">
 	    				<?php 
 	  						if($checkStatus!=1){
-								echo '<p><a class="btn btn-lg btn-block btn-warning pull-right" role="button" href="checkin.php">Check in&nbsp <span class="glyphicon glyphicon-info-sign"></span>
+								echo '<p><a class="btn btn-lg btn-block btn-warning pull-right" role="button" href="checkin.php"><span class="glyphicon glyphicon-info-sign"></span> Check in &nbsp
 	  					</a></p>';
-								echo '<p><a class="btn btn btn-info btn-lg btn-block pull-right" role="button" disabled="disabled">
-  								Check out&nbsp <span class="glyphicon glyphicon-ban-circle"></span></a></p>';
+								echo '<p><a class="btn btn btn-primary btn-lg btn-block pull-right" role="button" disabled="disabled" href="checkout.php">
+  								<span class="glyphicon glyphicon-ban-circle"></span> Check out</a></p>';
 							}else {
-								echo '<a class="btn btn-lg btn-block btn-success pull-right" role="button" disabled="disabled" href="checkin.php">Check in&nbsp <span class="glyphicon glyphicon-ok-sign"></span>
+								echo '<a class="btn btn-lg btn-block btn-success pull-right" role="button" disabled="disabled" href="checkin.php"><span class="glyphicon glyphicon-ok-sign"></span> Check in &nbsp
 	  					</a>';
-								echo '<p><a class="btn btn btn-lg btn-block btn-warning pull-right" role="button">
-  								Check out&nbsp <span class="glyphicon glyphicon-info-sign"></span></a></p>';
+								echo '<p><a class="btn btn btn-lg btn-block btn-warning pull-right" role="button" href="checkout.php">
+  								<span class="glyphicon glyphicon-info-sign"></span> Check out </a></p>';
 							}
 	  					?>
   						<p>
@@ -101,7 +101,7 @@
 				<div id="record-content">
 					<div class="col-md-8">
       					<ul id="eca-tabs" class="nav nav-tabs">
-        					<li class="active"><a href="#today-records" data-toggle="tab">今日記錄</a></li>
+        					<li class="active"><a href="#today-records" data-toggle="tab">當日記錄</a></li>
         					<li><a href="#week-records" data-toggle="tab">一週記錄</a></li>
         					<li><a href="#leave" data-toggle="tab">請假</a></li>
         				</ul>
@@ -118,18 +118,41 @@
       					</div>
 					</div>
 					<div class="col-md-4">
-						<div id="datepicker-parent">
+<!-- 						<div id="datepicker-parent">
 							<div id="datepicker"></div>
 							<script>
 								$( "#datepicker" ).datepicker();
 							</script>
 						</div>
+ -->				
+ 						<form class="form-leave" role="form" name="leaveForm" method="post" action="leave.php">
+							<textarea class="form-control input-components" rows="5" placeholder="請假事由：" id="leave-textarea"></textarea>
+							<div class="input-group input-components">
+  								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								<input class="form-control" placeholder="選擇請假日期或記錄時間" type="text" id="datepicker">
+							</div>
+							<button class="btn btn-lg btn-info btn-block input-components" type="submit" value="search">
+								<span class="glyphicon glyphicon-search"></span>									
+								查詢
+							</button>
+							<button class="btn btn-lg btn-success btn-block input-components" type="submit" value="leave">
+								<span class="glyphicon glyphicon-pushpin"></span>									
+								請假
+							</button>
+ 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>    
-</div> 
+</div>
+    <div class="container" id="footer">
+    	<div class="row">
+            <hr>
+            <p class="text-right">2014 ECA LAB 使用<a target="_blank" href="http://getbootstrap.com">Bootstrap.</a>製作</p>
+            <p class="text-right">建議使用<a target="_blank" href="https://www.google.com/intl/zh-TW/chrome/">Chrome</a>、<a target="_blank" href="http://moztw.org/firefox/">Firefox</a>或Internet Explorer 9 以上的瀏覽器瀏覽，以達最佳的瀏覽體驗。</p>
+        </div>
+    </div>  
 <script type="text/javascript" src="../../js/action.js"></script>
 </body>
 </html>

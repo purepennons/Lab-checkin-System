@@ -24,15 +24,15 @@
     $db->query($sql);
     $result = $db->fetch_array();
 	$checkStatus = $result['status'];
-	if($checkStatus!=1){
+	if($checkStatus!=2){
  		$sql = sprintf("INSERT INTO RECORD(username, name, status, record_date, record_time, ip) VALUES ('%s','%s', '%d', curdate(), curtime(), '%s')", 
- 				mysql_real_escape_string($_SESSION['sessionusername']), $name, 1, $_SESSION['sessionUserIP']);
+ 				mysql_real_escape_string($_SESSION['sessionusername']), $name, 2, $_SESSION['sessionUserIP']);
  		$flag = $db->query($sql);
- 		echo "<script>alert('Check in!')</script>";
+ 		echo "<script>alert('Check out！')</script>";
  		echo "<script>document.location.href='GeneralUserIndex.php'</script>";
  		exit;
 	}else {
-		echo "<script>alert('你今天已經Check in, 請先Check out後，才可以再次Check in。')</script>";
+		echo "<script>alert('你今天已經Check out或尚未Check in, 請先Check in後，才可以Check out。')</script>";
 		echo "<script>document.location.href='GeneralUserIndex.php'</script>";
 		exit;
 	}
