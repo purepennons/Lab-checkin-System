@@ -40,3 +40,29 @@ body {
 .input-components {
 	margin-bottom: 10px;
 }
+
+.table.table-bordered th, .table.table-bordered td{
+	text-align: center;
+}
+
+/*color demo*/
+.colorfulCircle {
+	width: 20px;
+	height: 20px;
+	background-color: #d9edf7;
+	border-radius: 10px;
+	display: inline-block;
+	border: 1px solid white;
+}
+
+#success-circle {
+	background-color: #dff0d8;
+}
+
+#warning-circle {
+	background-color: #fcf8e3;
+}
+
+.color-demo{
+	padding: 5px;
+}

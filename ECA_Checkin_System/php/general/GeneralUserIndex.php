@@ -111,12 +111,13 @@
 				<div id="record-content">
 					<div class="col-md-8">
       					<ul id="eca-tabs" class="nav nav-tabs">
-        					<li class="active"><a href="#today-records" data-toggle="tab">當日記錄</a></li>
+        					<li class="active"><a href="#one-day-records" data-toggle="tab">當日記錄</a></li>
         					<li><a href="#week-records" data-toggle="tab">一週記錄</a></li>
         					<li><a href="#leave" data-toggle="tab">請假</a></li>
         				</ul>
       					<div id="eca-tabs-content" class="tab-content">
-        					<div class="tab-pane fade in active" id="today-records">
+        					<div class="tab-pane fade in active" id="one-day-records">
+        						<p>當前查詢日期：<?php echo $_SESSION['sessiondate']?></p>
         						<table class="table">
         							<thead>
         								<tr>
@@ -146,8 +147,55 @@
         								?>
         							</tbody>
         						</table>
+        						<table>
+        							<tbody>
+        								<tr>
+        									<td class="color-demo"><div class="colorfulCircle" id="info-circle"></div></td><td>Check in</td>
+        									<td class="color-demo"><div class="colorfulCircle" id="success-circle"></div></td><td>Check out</td>
+        									<td class="color-demo"><div class="colorfulCircle" id="warning-circle"></div></td><td>Leave</td>
+        								</tr>
+        							</tbody>
+        						</table>
         					</div>
         					<div class="tab-pane fade" id="week-records">
+        						<?php 
+        						?>
+        						<table class="table table-bordered">
+        							<thead>
+        								<tr>
+        									<th>日期\時間</th>
+ 											<th>08:00</th><th>08:30</th><th>09:00</th>
+ 											<th>09:30</th><th>10:00</th><th>10:30</th>
+ 											<th>11:00</th><th>11:30</th><th>12:00</th>
+ 											<th>12:30</th><th>13:00</th>
+        								<tr>
+        							</thead>
+        							<tbody>
+        							</tbody>       							
+        						</table>
+        						<hr>
+        						<table class="table table-bordered">
+        							<thead>
+        								<tr>
+        									<th>日期\時間</th>
+ 											<th>13:30</th><th>14:00</th><th>14:30</th>
+					 						<th>15:00</th><th>15:30</th><th>16:00</th>
+					 						<th>16:30</th><th>17:00</th><th>17:30</th>
+					 						<th>18:00</th><th>18:30</th>
+        								<tr>
+        							</thead>
+        							<tbody>
+        							</tbody> 
+        						</table>
+        						<table>
+        							<tbody>
+        								<tr>
+        									<td class="color-demo"><div class="colorfulCircle" id="info-circle"></div></td><td>Check in</td>
+        									<td class="color-demo"><div class="colorfulCircle" id="success-circle"></div></td><td>Check out</td>
+        									<td class="color-demo"><div class="colorfulCircle" id="warning-circle"></div></td><td>Leave</td>
+        								</tr>
+        							</tbody>
+        						</table>
         					</div>
         					<div class="tab-pane fade" id="leave">
         					</div>

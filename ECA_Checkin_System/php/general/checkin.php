@@ -21,6 +21,10 @@
     $db->query($sql);
     $result = $db->fetch_array();
 	$checkStatus = $result['status'];
+ 	$sql = sprintf("SELECT curdate()");
+ 	$flag = $db->query($sql);
+ 	$result = $db->fetch_array();
+ 	$_SESSION['sessiondate'] = $result[0];
 	if($checkStatus!=1){
  		$sql = sprintf("INSERT INTO RECORD(username, name, status, record_date, record_time, ip) VALUES ('%s','%s', '%d', curdate(), curtime(), '%s')", 
  				mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($name), 1, mysql_real_escape_string($_SESSION['sessionUserIP']));
