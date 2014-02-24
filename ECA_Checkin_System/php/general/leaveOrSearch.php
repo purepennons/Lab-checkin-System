@@ -19,7 +19,8 @@
 	$leaveText = $_POST['leave-textarea'];
 	if($buttonFlag=='search'){
 		$_SESSION['sessiondate'] = $chooseDate;
-		
+		echo "<script>document.location.href='GeneralUserIndex.php'</script>";
+		exit;
 	}else if($buttonFlag=='leave'){
 		if(empty($_POST['leave-textarea']) || empty($_POST['datepicker'])){
 			echo "<script>alert('請假事由與請假日期皆不可為空。')</script>";
