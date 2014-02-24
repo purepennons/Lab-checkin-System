@@ -10,10 +10,6 @@
 	include_once(realpath("../DB_Class.php"));
 	$db = new DB();
 	$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-	$sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3)", mysql_real_escape_string($_SESSION['sessionusername']));
-	$db->query($sql);
-	$result = $db->fetch_array();
-	$checkStatus = $result['status'];
 
 	if(empty($_SESSION['sessiondate'])){
 		$sql = sprintf("SELECT curdate()");
@@ -89,6 +85,10 @@
 					</div>
   					<div class="col-md-4">
 	    				<?php 
+	    					$sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3)", mysql_real_escape_string($_SESSION['sessionusername']));
+							$db->query($sql);
+							$result = $db->fetch_array();
+							$checkStatus = $result['status'];
 	  						if($checkStatus!=1){
 								echo '<p><a class="btn btn-lg btn-block btn-warning pull-right" role="button" href="checkin.php"><span class="glyphicon glyphicon-info-sign"></span> Check in &nbsp
 	  					</a></p>';
@@ -126,7 +126,7 @@
         							</thead>
         							<tbody>
         								<?php
-        									$sql = sprintf("SELECT * FROM `RECORD` WHERE username='%s' AND record_date='%s' ORDER BY record_time DESC", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessiondate']));
+        									$sql = sprintf("SELECT * FROM `RECORD` WHERE username='%s' AND record_date='%s'", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessiondate']));
         									$db->query($sql);
         									$counter = 0;
         									while($result = $db->fetch_array()){

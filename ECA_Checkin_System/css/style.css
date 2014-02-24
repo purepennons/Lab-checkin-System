@@ -41,7 +41,7 @@ body {
 	margin-bottom: 10px;
 }
 
-.table.table-bordered th, .table.table-bordered td{
+.table th, .table td{
 	text-align: center;
 }
 
