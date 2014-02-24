@@ -131,10 +131,11 @@
         									while($result = $db->fetch_array()){
         										$counter++;
         										$statusText = array('Check in', 'Check out', 'Leave');
-        										$statusNum = $result[3] -1;
+        										$statusNum = $result[3] - 1;
+        										$tableRowColor = array('<tr class="info">', '<tr class="success">', '<tr class="warning">');
         										echo 
-        										'<tr>
-        												<td>' .$counter.   '</td>'
+        											$tableRowColor[$statusNum] //<tr>
+        											  .'<td>' .$counter.   '</td>'
         											  .'<td>' .$statusText[$statusNum]. '</td>'
         											  .'<td>' .$result[4]. '</td>'
         											  .'<td>' .$result[5]. '</td>'

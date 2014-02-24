@@ -40,6 +40,10 @@
 		$flag = $db->query($sql);
 		$sql = sprintf("INSERT INTO `LEAVE_RECORD`(`username`, `content`, `leave_date`) VALUES ('%s','%s', '%s')", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($leaveText), mysql_real_escape_string($chooseDate));
  		$flag = $db->query($sql);
+ 		$sql = sprintf("SELECT curdate()");
+ 		$flag = $db->query($sql);
+ 		$result = $db->fetch_array();
+ 		$_SESSION['sessiondate'] = $result[0];
 		echo "<script>alert('請假成功！')</script>";
 		echo "<script>document.location.href='GeneralUserIndex.php'</script>";
 		exit;
