@@ -125,7 +125,7 @@
         							</thead>
         							<tbody>
         								<?php
-        									$sql = sprintf("SELECT * FROM `RECORD` WHERE username='%s' AND record_date='%s'", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessiondate']));
+        									$sql = sprintf("SELECT * FROM `RECORD` WHERE username='%s' AND record_date='%s' ORDER BY record_time DESC", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessiondate']));
         									$db->query($sql);
         									$counter = 0;
         									while($result = $db->fetch_array()){
@@ -140,7 +140,7 @@
         											  .'<td>' .$result[4]. '</td>'
         											  .'<td>' .$result[5]. '</td>'
         											  .'<td>' .$result[6]. '</td>'
-        											  .'<td>' .$result[3]. '</td>'        					
+        											  .'<td>' .$result[7]. '</td>'        					
         										 . '</tr>';
         									}
         								?>
@@ -148,10 +148,8 @@
         						</table>
         					</div>
         					<div class="tab-pane fade" id="week-records">
-          						<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
         					</div>
         					<div class="tab-pane fade" id="leave">
-          						<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
         					</div>
       					</div>
 					</div>
