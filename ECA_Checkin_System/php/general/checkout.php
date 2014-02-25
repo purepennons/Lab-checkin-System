@@ -20,7 +20,7 @@
     $result = $db->fetch_array();
     $name = $_SESSION['sessionname'];
     //找出當天時間最新的特定會員資料 且status!=3
-    $sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3 AND record_date=curdate())", mysql_real_escape_string($_SESSION['sessionusername']));
+    $sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND username='%s' AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3 AND record_date=curdate())", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessionusername']));
     $db->query($sql);
     $result = $db->fetch_array();
 	$checkStatus = $result['status'];

@@ -62,7 +62,7 @@
 					</div>
   					<div class="col-md-4">
 	    				<?php 
-	    					$sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3 AND record_date=curdate())", mysql_real_escape_string($_SESSION['sessionusername']));
+                            $sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND username='%s' AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3 AND record_date=curdate())", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessionusername']));
 							$db->query($sql);
 							$result = $db->fetch_array();
 							$checkStatus = $result['status'];
@@ -136,15 +136,17 @@
         					</div>
         					<div class="tab-pane fade" id="week-records">
                                 <?php
-                                    $colorCircle = array("<div class='colorfulCircle' id='info-circle'></div>", 
+                                    $colorCircle = array("", 
+                                                         "<div class='colorfulCircle' id='info-circle'></div>", 
                                                          "<div class='colorfulCircle' id='success-circle'></div>",
                                                          "<div class='colorfulCircle' id='warning-circle'></div>");
                                     $date_end = $_SESSION['sessiondate'];
-                                    $sql = sprintf("SELECT INTERVAL -6 DAY + '%s'", $date_end);
+                                    $sql = sprintf("SELECT INTERVAL '%d' DAY + '%s'", -6, $date_end);
                                     $db->query($sql);
                                     $result = $db->fetch_array();
-                                    $date_start = $result[0];
+                                    $dateStart = $result[0];
                                 ?>
+                                <p>當前查詢日期區間:&nbsp<?php echo $dateStart?>&nbsp ~ &nbsp<?php echo $date_end?></p>
         						<table class="table table-bordered table-hover">
         							<thead>
         								<tr>
@@ -157,18 +159,43 @@
         							</thead>
         							<tbody>
                                         <?php
-                                            // for($i=0;$i<7;$i++){
-                                            //     $sql = sprintf("");
-                                            //     $db->query($sql);
-                                            //     while($result = $db->fetch_array()){
+                                            for($i=0;$i<7;$i++){
+                                                $timeMapping1 = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);  //顯示區域與時間映射
+                                                $sql = sprintf("SELECT INTERVAL '%d' DAY + '%s'", ((-6)+$i), $date_end);
+                                                $db->query($sql);
+                                                $result = $db->fetch_array();
+                                                $date_start = $result[0];
+                                                $sql = sprintf("SELECT * FROM `RECORD` WHERE record_date = '%s' AND username = '%s' AND status != 3 AND record_time >= '08::00:00' AND record_time <= '13:00:00' ORDER BY record_date, record_time", mysql_real_escape_string($date_start), mysql_real_escape_string($_SESSION['sessionusername']));
+                                                $db->query($sql);
+                                                while($result = $db->fetch_array()){
 
-                                            //     }
-                                            // } 
+                                                }
+                                                echo 
+                                                    '<tr>'
+                                                        .'<td>' .$date_start. '</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[1]]. '</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[2]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[3]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[4]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[5]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[6]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[7]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[8]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[9]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1[10]].'</td>'                          
+                                                    .'</tr>';
+                                                // $sql = sprintf("");
+                                                // $db->query($sql);
+                                                // while($result = $db->fetch_array()){
+
+                                                // }
+                                            } 
                                         ?>                                        
         							</tbody>       							
         						</table>
         						<hr>
-        						<table class="table table-bordered">
+        						<table class="table table-bordered table-hover">
         							<thead>
         								<tr>
         									<th>日期\時間</th>
@@ -178,7 +205,7 @@
 					 						<th>18:00</th><th class="isLeave">Leave</th>
         								<tr>
         							</thead>
-        							<tbody>
+        							<tbody>                                                                               
         							</tbody> 
         						</table>
         						<table>
