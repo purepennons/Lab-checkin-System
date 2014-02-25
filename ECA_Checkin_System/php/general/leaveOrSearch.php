@@ -27,7 +27,7 @@
 			echo "<script>document.location.href='GeneralUserIndex.php'</script>";
 			exit;
 		}
-		$sql = sprintf("SELECT '%s' > curdate()", mysql_real_escape_string($chooseDate));
+		$sql = sprintf("SELECT '%s' >= curdate()", mysql_real_escape_string($chooseDate));
 		$flag = $db->query($sql);
 		$result = $db->fetch_array();
 		if(!$result[0]){
