@@ -160,7 +160,12 @@
         							<tbody>
                                         <?php
                                             for($i=0;$i<7;$i++){
-                                                $timeMapping1 = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);  //顯示區域與時間映射
+                                                $timeMapping1 = array('08'=>array(0, 0),
+                                                                      '09'=>array(0, 0),
+                                                                      '10'=>array(0, 0),
+                                                                      '11'=>array(0, 0),
+                                                                      '12'=>array(0, 0),
+                                                                      '13'=>array(0, 0));  //顯示區域與時間映射
                                                 $sql = sprintf("SELECT INTERVAL '%d' DAY + '%s'", ((-6)+$i), $date_end);
                                                 $db->query($sql);
                                                 $result = $db->fetch_array();
@@ -168,28 +173,31 @@
                                                 $sql = sprintf("SELECT * FROM `RECORD` WHERE record_date = '%s' AND username = '%s' AND status != 3 AND record_time >= '08::00:00' AND record_time <= '13:00:00' ORDER BY record_date, record_time", mysql_real_escape_string($date_start), mysql_real_escape_string($_SESSION['sessionusername']));
                                                 $db->query($sql);
                                                 while($result = $db->fetch_array()){
-
+                                                    $recordTime = $result['record_time'];
+                                                    $subTimeHour = substr($recordTime, 0, 2);
+                                                    $subTimeMin = substr($recordTime, 2, 2);
+                                                    $minMapping = 0;
+                                                    if($subTimeMin>=30){
+                                                        $minMapping = 1;
+                                                    }
+                                                    $timeMapping1[$subTimeHour][$minMapping] = $result['status'];
                                                 }
+
                                                 echo 
                                                     '<tr>'
                                                         .'<td>' .$date_start. '</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[0]].'</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[1]]. '</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[2]].'</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[3]].'</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[4]].'</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[5]].'</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[6]].'</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[7]].'</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[8]].'</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[9]].'</td>'
-                                                        .'<td>' .$colorCircle[$timeMapping1[10]].'</td>'                          
+                                                        .'<td>' .$colorCircle[$timeMapping1['08'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['08'][1]]. '</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['09'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['09'][1]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['10'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['10'][1]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['11'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['11'][1]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['12'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['12'][1]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['13'][0]].'</td>'                          
                                                     .'</tr>';
-                                                // $sql = sprintf("");
-                                                // $db->query($sql);
-                                                // while($result = $db->fetch_array()){
-
-                                                // }
                                             } 
                                         ?>                                        
         							</tbody>       							
