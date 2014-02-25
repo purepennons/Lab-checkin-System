@@ -90,7 +90,7 @@
       					<ul id="eca-tabs" class="nav nav-tabs">
         					<li class="active"><a href="#one-day-records" data-toggle="tab">當日記錄</a></li>
         					<li><a href="#week-records" data-toggle="tab">一週記錄</a></li>
-        					<li><a href="#leave" data-toggle="tab">請假</a></li>
+        					<li><a href="#leave" data-toggle="tab">請假記錄</a></li>
         				</ul>
       					<div id="eca-tabs-content" class="tab-content">
         					<div class="tab-pane fade in active" id="one-day-records">
@@ -268,11 +268,37 @@
         									<td class="color-demo"><div class="colorfulCircle" id="info-circle"></div></td><td>Check in</td>
         									<td class="color-demo"><div class="colorfulCircle" id="success-circle"></div></td><td>Check out</td>
         									<td class="color-demo"><div class="colorfulCircle" id="warning-circle"></div></td><td>Leave</td>
-        								</tr>
+        								    <td>&nbsp &nbsp備註：</td><td> 查詢區間為查詢日期往前六天</td>
+                                        </tr>
         							</tbody>
         						</table>
         					</div>
         					<div class="tab-pane fade" id="leave">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th><th>請假日期</th><th>記錄日期</th><th>記錄時間</th><th>請假事由</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $sql = sprintf("SELECT * FROM `RECORD` WHERE username='%s' AND status=3 ORDER BY leave_date DESC", mysql_real_escape_string($_SESSION['sessionusername']));
+                                            $db->query($sql);
+                                            $counter = 0;
+                                            while($result = $db->fetch_array()){
+                                                $counter++;
+                                                echo 
+                                                   '<tr>'
+                                                      .'<td>' .$counter.   '</td>'
+                                                      .'<td>' .$result['leave_date']. '</td>'
+                                                      .'<td>' .$result['record_date']. '</td>'
+                                                      .'<td>' .$result['record_time']. '</td>'
+                                                      .'<td>' .$result['content']. '</td>'
+                                                 . '</tr>';
+                                            }                                        
+                                        ?>
+                                    </tbody>
+                                </table>
         					</div>
       					</div>
 					</div>
