@@ -170,7 +170,7 @@
                                                 $db->query($sql);
                                                 $result = $db->fetch_array();
                                                 $date_start = $result[0];
-                                                $sql = sprintf("SELECT * FROM `RECORD` WHERE record_date = '%s' AND username = '%s' AND status != 3 AND record_time >= '08::00:00' AND record_time <= '13:00:00' ORDER BY record_date, record_time", mysql_real_escape_string($date_start), mysql_real_escape_string($_SESSION['sessionusername']));
+                                                $sql = sprintf("SELECT * FROM `RECORD` WHERE record_date = '%s' AND username = '%s' AND status != 3 AND record_time >= '08:00:00' AND record_time <= '13:00:00' ORDER BY record_date, record_time", mysql_real_escape_string($date_start), mysql_real_escape_string($_SESSION['sessionusername']));
                                                 $db->query($sql);
                                                 while($result = $db->fetch_array()){
                                                     $recordTime = $result['record_time'];
@@ -213,8 +213,54 @@
 					 						<th>18:00</th><th class="isLeave">Leave</th>
         								<tr>
         							</thead>
-        							<tbody>                                                                               
-        							</tbody> 
+                                    <tbody>
+                                        <?php
+                                            for($i=0;$i<7;$i++){
+                                                $timeMapping1 = array('13'=>array(0, 0),
+                                                                      '14'=>array(0, 0),
+                                                                      '15'=>array(0, 0),
+                                                                      '16'=>array(0, 0),
+                                                                      '17'=>array(0, 0));  //顯示區域與時間映射
+                                                $leaveFlag = 0;
+                                                $sql = sprintf("SELECT INTERVAL '%d' DAY + '%s'", ((-6)+$i), $date_end);
+                                                $db->query($sql);
+                                                $result = $db->fetch_array();
+                                                $date_start = $result[0];
+                                                $sql = sprintf("SELECT * FROM `RECORD` WHERE record_date = '%s' AND username = '%s' AND status != 3 AND record_time >= '13:30:00' AND record_time <= '18:00:00' ORDER BY record_date, record_time", mysql_real_escape_string($date_start), mysql_real_escape_string($_SESSION['sessionusername']));
+                                                $db->query($sql);
+                                                while($result = $db->fetch_array()){
+                                                    $recordTime = $result['record_time'];
+                                                    $subTimeHour = substr($recordTime, 0, 2);
+                                                    $subTimeMin = substr($recordTime, 2, 2);
+                                                    $minMapping = 0;
+                                                    if($subTimeMin>=30){
+                                                        $minMapping = 1;
+                                                    }
+                                                    $timeMapping1[$subTimeHour][$minMapping] = $result['status'];
+                                                }
+                                                $sql = sprintf("SELECT * FROM `RECORD` WHERE leave_date = '%s' AND username='%s' AND status=3", mysql_real_escape_string($date_start), mysql_real_escape_string($_SESSION['sessionusername']));
+                                                $db->query($sql);
+                                                while($result = $db->fetch_array()){
+                                                    $leaveFlag = $result['status'];
+                                                }
+                                                echo 
+                                                    '<tr>'
+                                                        .'<td>' .$date_start. '</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['13'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['13'][1]]. '</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['14'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['14'][1]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['15'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['15'][1]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['16'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['16'][1]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['17'][0]].'</td>'
+                                                        .'<td>' .$colorCircle[$timeMapping1['17'][1]].'</td>'
+                                                        .'<td>' .$colorCircle[$leaveFlag].'</td>'                          
+                                                    .'</tr>';
+                                            } 
+                                        ?>                                        
+                                    </tbody>                                
         						</table>
         						<table>
         							<tbody>
