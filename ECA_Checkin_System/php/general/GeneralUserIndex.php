@@ -52,29 +52,6 @@
 </head>
 <body>
 	<div class="container">
-<!-- 		<a href="../login/Logout.php">登出</a>
- --><!-- 		 -->
-<!--  		<table class="table">
- 			<thead>
- 				<tr>
- 					<th></th>
- 					<th>08:00</th><th>08:30</th><th>09:00</th><th>09:30</th><th>10:00</th><th>10:30</th><th>11:00</th>
- 					<th>11:30</th><th>12:00</th><th>12:30</th><th>13:00</th><th>13:30</th><th>14:00</th><th>14:30</th>
- 					<th>15:00</th><th>15:30</th><th>16:00</th><th>16:30</th><th>17:00</th><th>17:30</th><th>18:00</th>
- 				</tr>
- 			</thead>
- 			<tbody>
- 				<tr>
- 					<th></th>
- 					<td></td>
- 					<td></td>
- 					<td></td>
-
- 				</tr>
- 			</tbody>
- 		</table>
-
- -->
  		<p class="text-right" >當前使用者：<?php echo $_SESSION['sessionname']?> &nbsp&nbsp<a href="../login/Logout.php">登出</a></p>
  		<div class="content">
 			<div class="jumbotron">
@@ -85,7 +62,7 @@
 					</div>
   					<div class="col-md-4">
 	    				<?php 
-	    					$sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3)", mysql_real_escape_string($_SESSION['sessionusername']));
+	    					$sql = sprintf("SELECT * FROM RECORD WHERE record_date=curdate() AND record_time=(SELECT MAX(record_time) FROM RECORD WHERE username='%s' AND status!=3 AND record_date=curdate())", mysql_real_escape_string($_SESSION['sessionusername']));
 							$db->query($sql);
 							$result = $db->fetch_array();
 							$checkStatus = $result['status'];
@@ -158,9 +135,17 @@
         						</table>
         					</div>
         					<div class="tab-pane fade" id="week-records">
-        						<?php 
-        						?>
-        						<table class="table table-bordered">
+                                <?php
+                                    $colorCircle = array("<div class='colorfulCircle' id='info-circle'></div>", 
+                                                         "<div class='colorfulCircle' id='success-circle'></div>",
+                                                         "<div class='colorfulCircle' id='warning-circle'></div>");
+                                    $date_end = $_SESSION['sessiondate'];
+                                    $sql = sprintf("SELECT INTERVAL -6 DAY + '%s'", $date_end);
+                                    $db->query($sql);
+                                    $result = $db->fetch_array();
+                                    $date_start = $result[0];
+                                ?>
+        						<table class="table table-bordered table-hover">
         							<thead>
         								<tr>
         									<th>日期\時間</th>
@@ -171,6 +156,15 @@
         								<tr>
         							</thead>
         							<tbody>
+                                        <?php
+                                            // for($i=0;$i<7;$i++){
+                                            //     $sql = sprintf("");
+                                            //     $db->query($sql);
+                                            //     while($result = $db->fetch_array()){
+
+                                            //     }
+                                            // } 
+                                        ?>                                        
         							</tbody>       							
         						</table>
         						<hr>
@@ -181,7 +175,7 @@
  											<th>13:30</th><th>14:00</th><th>14:30</th>
 					 						<th>15:00</th><th>15:30</th><th>16:00</th>
 					 						<th>16:30</th><th>17:00</th><th>17:30</th>
-					 						<th>18:00</th><th>18:30</th>
+					 						<th>18:00</th><th class="isLeave">Leave</th>
         								<tr>
         							</thead>
         							<tbody>
