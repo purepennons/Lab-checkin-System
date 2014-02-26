@@ -34,6 +34,8 @@
     </script>
     <![endif]-->
 
+    <link rel="shortcut icon"href="../../images/logo.ico">
+
 	<!-- jQuery -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
