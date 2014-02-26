@@ -3,6 +3,12 @@ $(function() {
     $("#datepicker").datepicker({ dateFormat: "yy-mm-dd" });
 });
 
+//tooltip 初始化與方向設定
+$(function() {
+	$('a').tooltip({placement: 'top'});
+});
+
+
 
 //系統時間取得
 var clockStart = setInterval(function(){getCurTime()},1000);
@@ -19,9 +25,11 @@ function getCurTime() {
 	var month = monthName[currentTime.getMonth()];
 	var date = currentTime.getDate();
 	var m = 'AM';
-	if(currentHours >= 12){
+	if(currentHours > 11){
 		m = 'PM';
-		currentHours = currentHours - 12;
+		if(currentHours!=12){
+			currentHours = currentHours - 12;
+		}
 	}
 	currentHours = (currentHours / 10) >= 1 ? currentHours : '0' + currentHours.toString();
 	currentMins = (currentMins / 10) >= 1 ? currentMins : '0' + currentMins.toString();
@@ -32,3 +40,4 @@ function getCurTime() {
  	systemTime.innerHTML = m + ' ' + currentHours + ':' + currentMins + ':' + currentSec;
  	systemDate.innerHTML = month + ' - ' + date + ', ' + year;
 }
+

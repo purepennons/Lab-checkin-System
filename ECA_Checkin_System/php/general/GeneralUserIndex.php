@@ -53,7 +53,7 @@
 <body>
 	<div class="container">
  		<p class="text-right" >當前使用者：<?php echo $_SESSION['sessionname']?> &nbsp&nbsp<a href="../login/Logout.php">登出</a></p>
- 		<div class="content">
+        <div class="content">
 			<div class="jumbotron">
 				<div class="row">
 					<div class="col-md-8">
@@ -78,9 +78,6 @@
   								<span class="glyphicon glyphicon-info-sign"></span> Check out </a></p>';
 							}
 	  					?>
-  						<p>
-
-  						</p>  				
   					</div>
 				</div>
 			</div>
@@ -95,6 +92,7 @@
       					<div id="eca-tabs-content" class="tab-content">
         					<div class="tab-pane fade in active" id="one-day-records">
         						<p>當前查詢日期：<?php echo $_SESSION['sessiondate']?></p>
+                                <div id="one-day-table">
         						<table class="table">
         							<thead>
         								<tr>
@@ -124,6 +122,7 @@
         								?>
         							</tbody>
         						</table>
+                                </div>
         						<table>
         							<tbody>
         								<tr>
@@ -147,7 +146,8 @@
                                     $dateStart = $result[0];
                                 ?>
                                 <p>當前查詢日期區間:&nbsp<?php echo $dateStart?>&nbsp ~ &nbsp<?php echo $date_end?></p>
-        						<table class="table table-bordered table-hover">
+        						<div id="week-record-table">
+                                <table class="table table-bordered table-hover">
         							<thead>
         								<tr>
         									<th>日期\時間</th>
@@ -262,6 +262,7 @@
                                         ?>                                        
                                     </tbody>                                
         						</table>
+                                </div>                                
         						<table>
         							<tbody>
         								<tr>
@@ -271,9 +272,10 @@
         								    <td>&nbsp &nbsp備註：</td><td> 查詢區間為查詢日期往前六天</td>
                                         </tr>
         							</tbody>
-        						</table>
+        						</table>                                
         					</div>
         					<div class="tab-pane fade" id="leave">
+                                <div id="leave-table">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -282,23 +284,35 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $sql = sprintf("SELECT * FROM `RECORD` WHERE username='%s' AND status=3 ORDER BY leave_date DESC", mysql_real_escape_string($_SESSION['sessionusername']));
+                                            $sql = sprintf("SELECT * FROM `RECORD` WHERE username='%s' AND status=3 ORDER BY leave_date DESC, record_date DESC", mysql_real_escape_string($_SESSION['sessionusername']));
                                             $db->query($sql);
                                             $counter = 0;
                                             while($result = $db->fetch_array()){
                                                 $counter++;
+                                                $leaveContent = $result['content'];
                                                 echo 
                                                    '<tr>'
                                                       .'<td>' .$counter.   '</td>'
                                                       .'<td>' .$result['leave_date']. '</td>'
                                                       .'<td>' .$result['record_date']. '</td>'
                                                       .'<td>' .$result['record_time']. '</td>'
-                                                      .'<td>' .$result['content']. '</td>'
+                                                      .'<td>' .'<a href="#" data-toggle="tooltip"data-original-title="'.$leaveContent.'"><span class="glyphicon glyphicon-comment"></a>'.'</td>'
                                                  . '</tr>';
                                             }                                        
                                         ?>
                                     </tbody>
                                 </table>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>&nbsp &nbsp備註：</td><td> 鼠標移到<span class="glyphicon glyphicon-comment" style="color:#428bca"></span>可顯示請假事由</td>                                        
+                                            <td></td><td></td>
+                                            <td></td><td></td>
+                                            <td></td><td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>                                                                
+                                </div>
         					</div>
       					</div>
 					</div>

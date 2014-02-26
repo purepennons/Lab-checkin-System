@@ -41,6 +41,16 @@ body {
 	margin-bottom: 10px;
 }
 
+#one-day-table, #leave-table{
+	height: 300px;
+	overflow: auto;
+}
+
+#week-record-table {
+	height:300px;
+	overflow:auto;
+}
+
 .table th, .table td{
 	text-align: center;
 	vertical-align: center;
