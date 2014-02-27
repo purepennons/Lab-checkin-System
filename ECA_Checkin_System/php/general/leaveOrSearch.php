@@ -35,11 +35,6 @@
 			echo "<script>document.location.href='GeneralUserIndex.php'</script>";
 			exit;
 		}
-		//$sql = sprintf("INSERT INTO RECORD(username, name, status, record_date, record_time, ip) VALUES ('%s','%s', '%d', curdate(), curtime(), '%s')",
-		//		mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessionname']), 3, mysql_real_escape_string($_SESSION['sessionUserIP']));
-		//$flag = $db->query($sql);
-		//$sql = sprintf("INSERT INTO `LEAVE_RECORD`(`username`, `content`, `leave_date`) VALUES ('%s','%s', '%s')", mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($leaveText), mysql_real_escape_string($chooseDate));
- 		//$flag = $db->query($sql);
  		$sql = sprintf("INSERT INTO RECORD(username, name, status, record_date, record_time, ip, leave_date, content) VALUES ('%s','%s', '%d', curdate(), curtime(), '%s', '%s', '%s')",
  		 	mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($_SESSION['sessionname']), 3, mysql_real_escape_string($_SESSION['sessionUserIP']), mysql_real_escape_string($chooseDate), mysql_real_escape_string($leaveText));
  		$flag = $db->query($sql);

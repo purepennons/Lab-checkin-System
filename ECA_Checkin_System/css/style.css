@@ -77,3 +77,8 @@ body {
 .color-demo{
 	padding: 5px;
 }
+
+.adminInput {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
