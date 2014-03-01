@@ -44,6 +44,7 @@
 		$userList[$i][1] = $tempName;
 		if(empty($_SESSION['sessionChooseUsername']) && $i==0){
 			$_SESSION['sessionChooseUsername'] = $tempUsername;
+			$_SESSION['sessionChooseName'] = $tempName;
 		}
 		$i++;
 	}
@@ -96,11 +97,11 @@
  						<form class="form-query" role="form" name="queryForm" method="post" action="adminQuery.php">
 							<div class="input-group input-components adminInput">
   								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-								<input class="form-control" placeholder="選擇記錄時間" type="text" id="datepicker" name="datepicker" value="">
+								<input class="form-control" placeholder="選擇記錄時間" type="text" id="datepicker" name="datepicker" value="<?php echo $_SESSION['sessiondate']?>">
 							</div>
 							<select class="form-control adminInput" name="select-option-name">
 							    <?php 
-							    	$sql = sprintf("");
+							    	echo '<option value="'.$_SESSION['sessionChooseUsername'].'">'.$_SESSION['sessionChooseName'].'</option>';
 							    	for($i=0;$i<$numOfUserList;$i++){
 							    		echo '<option value="'.$userList[$i][0].'">'.$userList[$i][1].'</option>';
 							    	}
@@ -178,7 +179,11 @@
                                             }
                                             $timeMapping1[$subTimeHour][$minMapping] = $result['status'];
                                         }
-
+                                        $sql = sprintf("SELECT * FROM `RECORD` WHERE leave_date = '%s' AND username='%s' AND status=3", mysql_real_escape_string($date_start), mysql_real_escape_string($_SESSION['sessionChooseUsername']));
+                                        $db->query($sql);
+                                        while($result = $db->fetch_array()){
+                                            $leaveFlag = $result['status'];
+                                        }
                                         echo 
                                             '<tr>'
                                                 .'<td>' .$date_start. '</td>'
@@ -203,7 +208,7 @@
                                                 .'<td>' .$colorCircle[$timeMapping1['17'][0]].'</td>'                          
                                                 .'<td>' .$colorCircle[$timeMapping1['17'][1]].'</td>'
                                                 .'<td>' .$colorCircle[$timeMapping1['18'][0]].'</td>'                          
-                                                .'<td>' .$colorCircle[$timeMapping1['18'][1]].'</td>'                                                                               
+                                                .'<td>' .$colorCircle[$leaveFlag].'</td>'                                                                               
                                             .'</tr>';
                                     } 
                                 ?>                                        

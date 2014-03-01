@@ -323,7 +323,7 @@
 							<textarea class="form-control input-components" rows="5" placeholder="請假事由：" id="leave-textarea" name="leave-textarea" value=""></textarea>
 							<div class="input-group input-components">
   								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-								<input class="form-control" placeholder="選擇請假日期或記錄時間" type="text" id="datepicker" name="datepicker" value="">
+								<input class="form-control" placeholder="選擇請假日期或記錄時間" type="text" id="datepicker" name="datepicker" value="<?php echo $_SESSION['sessiondate']?>">
 							</div>
 							<button class="btn btn-lg btn-info btn-block input-components" type="submit" name="leave-search" id="search-button" value="search">
 								<span class="glyphicon glyphicon-search"></span>
