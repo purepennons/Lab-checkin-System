@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$chooseDate = $_POST['datepicker'];
 	$chooseUsername = $_POST['select-option-name'];
 	$_SESSION['sessiondate'] = $chooseDate;

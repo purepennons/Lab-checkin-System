@@ -50,7 +50,7 @@ body {
 	overflow:auto;
 }
 
-.table > thead > tr > th, .table > thead > tr > td, .table tr, .table td, .table th {
+.table > thead > tr > th, .table > tbody > tr > td, .table tr, .table td, .table th {
 	text-align: center;
 	vertical-align: middle;
 }
