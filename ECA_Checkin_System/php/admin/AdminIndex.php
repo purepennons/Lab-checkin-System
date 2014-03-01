@@ -40,16 +40,14 @@
 	while (	$result = $db->fetch_array() ) {
 		$tempUsername = $result['username'];
 		$tempName = $result['name'];
-		if(empty($_SESSION['sessionChooseUsername']) && $i=0){
-			$_SESSION['sessionChooseUsername'] = $tempUsername;
-		}
 		$userList[$i][0] = $tempUsername;
 		$userList[$i][1] = $tempName;
+		if(empty($_SESSION['sessionChooseUsername']) && $i==0){
+			$_SESSION['sessionChooseUsername'] = $tempUsername;
+		}
 		$i++;
 	}
-	$p = $_SESSION['sessionChooseUsername'];
 	$numOfUserList = count($userList);
-	echo "<script>alert('$p')</script>";
 ?>
 
 <!DOCTYPE html>
@@ -167,7 +165,7 @@
                                         $db->query($sql);
                                         $result = $db->fetch_array();
                                         $date_start = $result[0];
-                                        $sql = sprintf("SELECT * FROM `RECORD` WHERE record_date = '%s' AND username = '%s' AND status != 3 AND record_time >= '08:00:00' AND record_time <= '18:00:00' ORDER BY record_date, record_time", mysql_real_escape_string($date_start), mysql_real_escape_string($_SESSION['sessionusername']));
+                                        $sql = sprintf("SELECT * FROM `RECORD` WHERE record_date = '%s' AND username = '%s' AND status != 3 AND record_time >= '08:00:00' AND record_time <= '18:00:00' ORDER BY record_date, record_time", mysql_real_escape_string($date_start), mysql_real_escape_string($_SESSION['sessionChooseUsername']));
                                         $db->query($sql);
                                         while($result = $db->fetch_array()){
                                             $recordTime = $result['record_time'];
