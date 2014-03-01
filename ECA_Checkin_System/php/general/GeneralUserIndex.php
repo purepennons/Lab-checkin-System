@@ -71,10 +71,10 @@
 	  						if($checkStatus!=1){
 								echo '<p><a class="btn btn-lg btn-block btn-warning pull-right" role="button" href="checkin.php"><span class="glyphicon glyphicon-info-sign"></span> Check in &nbsp
 	  					</a></p>';
-								echo '<p><a class="btn btn btn-primary btn-lg btn-block pull-right" role="button" disabled="disabled" href="checkout.php">
+								echo '<p><a class="btn btn btn-success btn-lg btn-block pull-right" role="button" disabled="disabled" href="checkout.php">
   								<span class="glyphicon glyphicon-ban-circle"></span> Check out</a></p>';
 							}else {
-								echo '<a class="btn btn-lg btn-block btn-success pull-right" role="button" disabled="disabled" href="checkin.php"><span class="glyphicon glyphicon-ok-sign"></span> Check in &nbsp
+								echo '<a class="btn btn-lg btn-block btn-primary pull-right" role="button" disabled="disabled" href="checkin.php"><span class="glyphicon glyphicon-ok-sign"></span> Check in &nbsp
 	  					</a>';
 								echo '<p><a class="btn btn btn-lg btn-block btn-warning pull-right" role="button" href="checkout.php">
   								<span class="glyphicon glyphicon-info-sign"></span> Check out </a></p>';
@@ -110,7 +110,7 @@
         										$counter++;
         										$statusText = array('Check in', 'Check out', 'Leave');
         										$statusNum = $result[3] - 1;
-        										$tableRowColor = array('<tr class="info">', '<tr class="success">', '<tr class="warning">');
+        										$tableRowColor = array('<tr class="info">', '<tr class="success">', '<tr class="danger">');
         										echo 
         											$tableRowColor[$statusNum] //<tr>
         											  .'<td>' .$counter.   '</td>'
@@ -130,7 +130,7 @@
         								<tr>
         									<td class="color-demo"><div class="colorfulCircle" id="info-circle"></div></td><td>Check in</td>
         									<td class="color-demo"><div class="colorfulCircle" id="success-circle"></div></td><td>Check out</td>
-        									<td class="color-demo"><div class="colorfulCircle" id="warning-circle"></div></td><td>Leave</td>
+        									<td class="color-demo"><div class="colorfulCircle" id="danger-circle"></div></td><td>Leave</td>
         								</tr>
         							</tbody>
         						</table>
@@ -138,9 +138,9 @@
         					<div class="tab-pane fade" id="week-records">
                                 <?php
                                     $colorCircle = array("", 
-                                                         "<div class='colorfulCircle' id='info-circle'></div>", 
-                                                         "<div class='colorfulCircle' id='success-circle'></div>",
-                                                         "<div class='colorfulCircle' id='warning-circle'></div>");
+                                                         "<div class='colorfulCircle' id='checkin-circle'></div>", 
+                                                         "<div class='colorfulCircle' id='checkout-circle'></div>",
+                                                         "<div class='colorfulCircle' id='leave-circle'></div>");
                                     $date_end = $_SESSION['sessiondate'];
                                     $sql = sprintf("SELECT INTERVAL '%d' DAY + '%s'", -6, $date_end);
                                     $db->query($sql);
@@ -268,9 +268,9 @@
         						<table>
         							<tbody>
         								<tr>
-        									<td class="color-demo"><div class="colorfulCircle" id="info-circle"></div></td><td>Check in</td>
-        									<td class="color-demo"><div class="colorfulCircle" id="success-circle"></div></td><td>Check out</td>
-        									<td class="color-demo"><div class="colorfulCircle" id="warning-circle"></div></td><td>Leave</td>
+        									<td class="color-demo"><div class="colorfulCircle" id="checkin-circle"></div></td><td>Check in</td>
+        									<td class="color-demo"><div class="colorfulCircle" id="checkout-circle"></div></td><td>Check out</td>
+        									<td class="color-demo"><div class="colorfulCircle" id="leave-circle"></div></td><td>Leave</td>
         								    <td>&nbsp &nbsp備註：</td><td> 查詢區間為查詢日期往前六天</td>
                                         </tr>
         							</tbody>

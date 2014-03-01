@@ -25,9 +25,9 @@
 
 <?php 
     $colorCircle = array("", 
-                         "<div class='colorfulCircle' id='info-circle'></div>", 
-                         "<div class='colorfulCircle' id='success-circle'></div>",
-                         "<div class='colorfulCircle' id='warning-circle'></div>");
+                         "<div class='colorfulCircle' id='checkin-circle'></div>", 
+                         "<div class='colorfulCircle' id='checkout-circle'></div>",
+                         "<div class='colorfulCircle' id='leave-circle'></div>");
     $date_end = $_SESSION['sessiondate'];
 ?>
 
@@ -100,6 +100,7 @@
 							</div>
 							<select class="form-control adminInput" name="select-option-name">
 							    <?php 
+							    	$sql = sprintf("");
 							    	for($i=0;$i<$numOfUserList;$i++){
 							    		echo '<option value="'.$userList[$i][0].'">'.$userList[$i][1].'</option>';
 							    	}
@@ -213,9 +214,9 @@
 						<table>
 							<tbody>
 								<tr>
-									<td class="color-demo"><div class="colorfulCircle" id="info-circle"></div></td><td>Check in</td>
-									<td class="color-demo"><div class="colorfulCircle" id="success-circle"></div></td><td>Check out</td>
-									<td class="color-demo"><div class="colorfulCircle" id="warning-circle"></div></td><td>Leave</td>
+									<td class="color-demo"><div class="colorfulCircle" id="checkin-circle"></div></td><td>Check in</td>
+									<td class="color-demo"><div class="colorfulCircle" id="checkout-circle"></div></td><td>Check out</td>
+									<td class="color-demo"><div class="colorfulCircle" id="leave-circle"></div></td><td>Leave</td>
 								    <td>&nbsp &nbsp備註：</td><td> 查詢區間為查詢日期往前六天</td>
                                 </tr>
 							</tbody>

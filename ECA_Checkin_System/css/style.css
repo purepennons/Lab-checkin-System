@@ -65,12 +65,28 @@ body {
 	border: 1px solid white;
 }
 
+#info-circle {
+	background-color: #d9edf7;
+}
+
 #success-circle {
 	background-color: #dff0d8;
 }
 
-#warning-circle {
-	background-color: #fcf8e3;
+#danger-circle {
+	background-color: #f2dede;
+}
+
+#checkin-circle {
+	background-color: #3399FF;
+}
+
+#checkout-circle {
+	background-color: #33CC33;
+}
+
+#leave-circle {
+	background-color: #FF0066;
 }
 
 .color-demo{
