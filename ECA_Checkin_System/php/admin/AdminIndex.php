@@ -134,6 +134,7 @@
                             $dateStart = $result[0];
                         ?>
                         <p>當前查詢日期區間:&nbsp<?php echo $dateStart?>&nbsp ~ &nbsp<?php echo $date_end?></p>
+                        <p>姓名:<?php echo $_SESSION['sessionChooseName']?></p>
 						<div id="admin-week-record-table">
                         <table class="table table-bordered table-condensed table-hover table-responsive">
 							<thead>

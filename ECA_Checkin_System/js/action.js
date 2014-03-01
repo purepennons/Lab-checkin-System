@@ -8,8 +8,6 @@ $(function() {
 	$('a').tooltip({placement: 'top'});
 });
 
-
-
 //系統時間取得
 var clockStart = setInterval(function(){getCurTime()},1000);
 

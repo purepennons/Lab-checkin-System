@@ -43,13 +43,24 @@
 	<!-- other CSS -->
 	<link href="css/signin.css" rel="stylesheet">
 
+	<!-- other js -->
+	<script src="js/sha1.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		//加密
+		function encoder() {
+			var ps = document.getElementById('password');
+			ps.value = SHA1(ps.value);
+		}
+	</script>
+
+
 </head>
 <body>
 	<div class="container">
     	<form class="form-signin" role="form" name="loginForm" method="post" action="php/login/checkLogin.php">
     		<h2 class="form-signin-heading"><p>ECA LAB</p> <p>Check in System</p></h2>
     		<input name="username" id="username" type="text" class="form-control" placeholder="Username" required autofocus>
-    		<input name="password" id="password" type="password" class="form-control" placeholder="Password" required>
+    		<input onchange="encoder()" name="password" id="password" type="password" class="form-control" placeholder="Password" required>
 <!--     		<label class="checkbox">
         		<input type="checkbox" value="remember-me"> Remember me
         	</label>
@@ -62,6 +73,6 @@
             <p class="text-right">2014 ECA LAB 使用<a target="_blank" href="http://getbootstrap.com">Bootstrap.</a>製作</p>
             <p class="text-right">建議使用<a target="_blank" href="https://www.google.com/intl/zh-TW/chrome/">Chrome</a>、<a target="_blank" href="http://moztw.org/firefox/">Firefox</a>或Internet Explorer 9 以上的瀏覽器瀏覽，以達最佳的瀏覽體驗。</p>
         </div>
-    </div> 
+    </div>
 </body>
 </html>
