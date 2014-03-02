@@ -68,23 +68,23 @@
     <link rel="shortcut icon"href="../../images/logo.ico">
 
    	<!-- jQuery -->
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="../../jquery/css/jquery-ui.css">
+	<script src="../../jquery/js/jquery-1.9.1.js"></script>
+	<script src="../../jquery/js/jquery-ui.js"></script>
 
     <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="../../bootstrap/js/bootstrap.min.js"></script>
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.min.css">
 	<!-- other CSS -->
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 
 </head>
 <body>
 	<div class="container">
-        <p class="text-right" >當前使用者：<?php echo $_SESSION['sessionname']?> (管理員)&nbsp&nbsp<a href="../login/Logout.php">登出</a></p>
+        <p class="text-right" >當前使用者：<?php echo $_SESSION['sessionname']?> (管理員)&nbsp&nbsp<a href="../login/Logout.php"><span class="glyphicon glyphicon-log-out"></span>登出</a></p>
         <div class="content">
 			<div class="jumbotron" id="inner-content1">
 				<div class="row">
@@ -331,7 +331,7 @@
                         ?>
                         <p>當前查詢日期區間:&nbsp<?php echo $dateStart?>&nbsp ~ &nbsp<?php echo $dateEnd?></p>						
                         <div id="leave-table">
-                        <table class="table table-striped">
+                        <table class="table table-striped ">
                             <thead>
                                 <tr>
                                     <th>#</th><th>姓名</th><th>請假日期</th><th>記錄日期</th><th>記錄時間</th><th>請假事由</th>

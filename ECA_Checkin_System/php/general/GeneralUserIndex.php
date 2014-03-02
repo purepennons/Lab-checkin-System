@@ -36,17 +36,18 @@
 
     <link rel="shortcut icon"href="../../images/logo.ico">
 
-	<!-- jQuery -->
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!-- jQuery -->
+    <link rel="stylesheet" href="../../jquery/css/jquery-ui.css">
+    <script src="../../jquery/js/jquery-1.9.1.js"></script>
+    <script src="../../jquery/js/jquery-ui.js"></script>
 
     <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.min.css">
+
 	<!-- other CSS -->
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 
