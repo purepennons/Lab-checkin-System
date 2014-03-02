@@ -322,7 +322,65 @@
 						</table>                                				                          
 					</div>
 					<div class="tab-pane fade" id="leave">
-					c
+                        <?php
+                            $sql = sprintf("SELECT INTERVAL '%d' DAY + '%s', INTERVAL '%d' DAY + '%s'", -7, $date_end, 7, $date_end);
+                            $db->query($sql);
+                            $result = $db->fetch_array();
+                            $dateStart = $result[0];
+                            $dateEnd = $result[1];
+                        ?>
+                        <p>當前查詢日期區間:&nbsp<?php echo $dateStart?>&nbsp ~ &nbsp<?php echo $dateEnd?></p>						
+                        <div id="leave-table">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th><th>姓名</th><th>請假日期</th><th>記錄日期</th><th>記錄時間</th><th>請假事由</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+	                                $counter = 0;                                
+                                	for($i=0;$i<15;$i++) {
+                                        $sql = sprintf("SELECT INTERVAL '%d' DAY + '%s'", (7-$i), $date_end);
+                                        $db->query($sql);
+                                        $result = $db->fetch_array();
+                                        $date_start = $result[0];
+	                                    $sql = sprintf("SELECT * FROM `RECORD` WHERE leave_date='%s' AND status=3 ORDER BY leave_date DESC, record_date DESC, name", mysql_real_escape_string($date_start));
+	                                    $db->query($sql);
+	                                    while($result = $db->fetch_array()){
+	                                        $counter++;
+	                                        $leaveContent = $result['content'];
+	                                        echo 
+	                                           '<tr>'
+	                                              .'<td>' .$counter.   '</td>'
+	                                              .'<td>' .$result['name']. '</td>'
+	                                              .'<td>' .$result['leave_date']. '</td>'
+	                                              .'<td>' .$result['record_date']. '</td>'
+	                                              .'<td>' .$result['record_time']. '</td>'
+	                                              .'<td>' .'<a href="#" data-toggle="tooltip"data-original-title="'.$leaveContent.'"><span class="glyphicon glyphicon-comment"></a>'.'</td>'
+	                                         . '</tr>';
+	                                    }                
+	                                }                            
+                                ?>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>&nbsp &nbsp備註1：</td><td> 鼠標移到<span class="glyphicon glyphicon-comment" style="color:#428bca"></span>可顯示請假事由</td>                                        
+                                    <td></td><td></td>
+                                    <td></td><td></td>
+                                    <td></td><td></td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp &nbsp備註2：</td><td>查詢區間為查詢日期前後一週</td>                                        
+                                    <td></td><td></td>
+                                    <td></td><td></td>
+                                    <td></td><td></td>
+                                </tr>                                
+                            </tbody>
+                        </table>                                                                
+                        </div>						
 					</div>
 				</div>
 			</div>        	
