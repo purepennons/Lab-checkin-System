@@ -97,3 +97,24 @@ body {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+#pagelogo {
+	width: 10px;
+	height: 10px;
+	display: block;
+	padding: 0;
+	margin: 0 auto;
+}
+
+#header-icon {
+	float: right;
+}
+
+#header-icon a {
+	text-decoration: none;
+}
+
+#chageInfo input, #chageInfo button {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
