@@ -44,7 +44,7 @@
 	<link href="css/signin.css" rel="stylesheet">
 
 	<!-- other js -->
-	<script src="js/sha1.js" type="text/javascript"></script>
+<!-- 	<script src="js/sha1.js" type="text/javascript"></script> -->
 	<script type="text/javascript">
 		//加密
 		function encoder() {

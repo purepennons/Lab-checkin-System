@@ -46,7 +46,7 @@ body {
 	overflow: auto;
 }
 
-#admin-week-record-table {
+#admin-week-record-table, #admin-one-day-record-table {
 	overflow:auto;
 }
 
