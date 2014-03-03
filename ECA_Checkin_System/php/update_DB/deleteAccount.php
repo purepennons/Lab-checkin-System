@@ -21,6 +21,26 @@
 	$curName = $result['name'];
 ?>
 
+<?php 
+	//user list (priority=3)
+	$sql = sprintf("SELECT `username`, `name`, `priority` FROM `ACCOUNT`");
+	$db->query($sql);
+	$userList = array(array());
+	$i = 0;
+	while (	$result = $db->fetch_array() ) {
+		$tempUsername = $result['username'];
+		$tempName = $result['name'];
+		$tempPriority = $result['priority'];
+		if($tempUsername != $curUsername){
+			$userList[$i][0] = $tempUsername;
+			$userList[$i][1] = $tempName;
+			$userList[$i][2] = $tempPriority;
+			$i++;
+		}
+	}
+	$numOfUserList = count($userList);
+?>
+
 
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -59,50 +79,21 @@
 	<link href="../../css/style.css" rel="stylesheet">
 
 	<!-- other js -->
-	<script src="../../js/sha1.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		//加密
-		function encoder(id) {
-			var ps = document.getElementById(id);
-			ps.value = SHA1(ps.value);
-		}
-	</script>
-
 
 </head>
 <body>
 	<div class="container">
-    	<form id="addAccount" class="form-signin" role="form" name="addAccountForm" method="post" action="addAccountSQL.php">
-    		<h2 class="form-signin-heading">新增帳號</h2>
-    		<div class="form-group">
-    			<label for="username">Username</label>
-    			<input name="username" id="username" type="text" class="form-control" placeholder="Username" required autofocus>    		
-    		</div>
-    		<div class="form-group">
-    			<label for="name">Name</label>
-    			<input name="name" id="name" type="text" class="form-control" placeholder="Name" required>
-    		</div>
-    		<div class="form-group">
-    			<label for="new-password">Password</label>
-	    		<input onchange="encoder('new-password')" name="new-password" id="new-password" type="password" class="form-control" placeholder="Password" required>
-    		</div>
-    		<div class="form-group">
-    			<label for="confirm-password">Confirm Password</label>
-	    		<input onchange="encoder('confirm-password')" name="confirm-password" id="confirm-password" type="password" class="form-control" placeholder="Confirm Password" required>
-    		</div>
-			<div class="radio">
-			  <label>
-			    <input type="radio" name="priority" id="priority3" value="3" checked>
-			    	一般使用者
-			  </label>
-			</div>
-			<div class="radio">
-			  <label>
-			    <input type="radio" name="priority" id="priority2" value="2">
-			    	管理員
-			  </label>
-			</div>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+    	<form id="deleteAccount" class="form-signin" role="form" name="deleteAccountForm" method="post" action="deleteAccountSQL.php">
+    		<h2 class="form-signin-heading">刪除帳號</h2>
+				<select class="form-control adminInput" name="select-option-deletename" id="select-option-deletename">
+				    <?php
+				    	$priorityMapping = array(2=>'管理員', 3=>'一般使用者'); 
+				    	for($i=0;$i<$numOfUserList;$i++){
+				    		echo '<option value="帳號為'.$userList[$i][0].'且姓名為'.$userList[$i][1].'">'.$userList[$i][1].'('.$priorityMapping[$userList[$i][2]].')'. '</option>';
+				    	}
+				    ?>							    
+				</select>
+			<button onclick="return confirm('確定刪除' + document.getElementById('select-option-deletename').value + '之帳號嗎?');"  class="btn btn-lg btn-primary btn-block" type="submit" name="deleteSubmit">Delete</button>
         </form>
     </div>
     <div class="container" id="footer">
