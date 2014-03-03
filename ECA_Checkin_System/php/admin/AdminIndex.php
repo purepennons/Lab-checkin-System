@@ -89,7 +89,7 @@
 <body>
 	<div class="container">
         <span id="header-icon"><a href="../update_DB/addAccount.php"> &nbsp <span class="glyphicon glyphicon-plus"></span></a> &nbsp <a href="../update_DB/deleteAccount.php"> &nbsp <span class="glyphicon glyphicon-minus"></span></a>&nbsp <a href="../update_DB/changeInfo.php"> &nbsp <span class="glyphicon glyphicon-wrench"></span></a> &nbsp&nbsp <a href="../login/Logout.php"> &nbsp<span class="glyphicon glyphicon-log-out"></span></a></span>
- 		<p class="text-left" >  &nbsp 當前管理員：<?php echo $_SESSION['sessionname']?></p>
+ 		<p class="text-left" > <img id="pagelogo" src="../../images/pagelogo.png"> &nbsp 當前管理員：<?php echo $_SESSION['sessionname']?></p>
         <div class="content">
 			<div class="jumbotron" id="inner-content1">
 				<div class="row">

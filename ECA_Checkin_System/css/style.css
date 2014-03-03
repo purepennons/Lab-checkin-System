@@ -99,11 +99,9 @@ body {
 }
 
 #pagelogo {
-	width: 10px;
-	height: 10px;
-	display: block;
+	width: 20px;
+	height: 20px;
 	padding: 0;
-	margin: 0 auto;
 }
 
 #header-icon {
