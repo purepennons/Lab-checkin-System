@@ -89,11 +89,11 @@
 				    <?php
 				    	$priorityMapping = array(2=>'管理員', 3=>'一般使用者'); 
 				    	for($i=0;$i<$numOfUserList;$i++){
-				    		echo '<option value="帳號為'.$userList[$i][0].'且姓名為'.$userList[$i][1].'">'.$userList[$i][1].'('.$priorityMapping[$userList[$i][2]].')'. '</option>';
+				    		echo '<option value="'.$userList[$i][0].'">'.$userList[$i][1].'('.$priorityMapping[$userList[$i][2]].')'. '</option>';
 				    	}
 				    ?>							    
 				</select>
-			<button onclick="return confirm('確定刪除' + document.getElementById('select-option-deletename').value + '之帳號嗎?');"  class="btn btn-lg btn-primary btn-block" type="submit" name="deleteSubmit">Delete</button>
+			<button onclick="return confirm('確定刪除username為' + document.getElementById('select-option-deletename').value + '之帳號嗎?');"  class="btn btn-lg btn-primary btn-block" type="submit" name="deleteSubmit">Delete</button>
         </form>
     </div>
     <div class="container" id="footer">
