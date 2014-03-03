@@ -37,9 +37,13 @@
     <link rel="shortcut icon"href="../../images/logo.ico">
 
     <!-- jQuery -->
+    <link rel="stylesheet" href="../../jquery/css/jquery-ui.css">
+    <script src="../../jquery/js/jquery-1.9.1.js"></script>
+    <script src="../../jquery/js/jquery-ui.js"></script>
+
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>    
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
@@ -55,7 +59,7 @@
 </head>
 <body>
 	<div class="container">
-        <span id="header-icon"><a href=""> &nbsp <span class="glyphicon glyphicon-wrench"></span></a> &nbsp&nbsp <a href="../login/Logout.php"> &nbsp<span class="glyphicon glyphicon-log-out"></span></a></span>
+        <span id="header-icon"><a href="../update_DB/changeInfo.php"> &nbsp <span class="glyphicon glyphicon-wrench"></span></a> &nbsp&nbsp <a href="../login/Logout.php"> &nbsp<span class="glyphicon glyphicon-log-out"></span></a></span>
  		<p class="text-left" >  &nbsp 當前使用者：<?php echo $_SESSION['sessionname']?></p>
         <div class="content">
 			<div class="jumbotron">

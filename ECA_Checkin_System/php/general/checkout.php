@@ -32,7 +32,7 @@
  		$sql = sprintf("INSERT INTO RECORD(username, name, status, record_date, record_time, ip) VALUES ('%s','%s', '%d', curdate(), curtime(), '%s')", 
  				mysql_real_escape_string($_SESSION['sessionusername']), mysql_real_escape_string($name), 2, mysql_real_escape_string($_SESSION['sessionUserIP']));
  		$flag = $db->query($sql);
- 		echo "<script>alert('Check out！')</script>";
+ 		echo "<script>alert('Check out!')</script>";
  		echo "<script>document.location.href='GeneralUserIndex.php'</script>";
  		exit;
 	}else {

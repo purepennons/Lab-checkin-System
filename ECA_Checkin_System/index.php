@@ -29,9 +29,13 @@
     <link rel="shortcut icon"href="../../images/logo.ico">
 
    	<!-- jQuery -->
+	<link rel="stylesheet" href="jquery/css/jquery-ui.css">
+	<script src="jquery/js/jquery-1.9.1.js"></script>
+	<script src="jquery/js/jquery-ui.js"></script>
+
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>	
 
     <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -44,7 +48,7 @@
 	<link href="css/signin.css" rel="stylesheet">
 
 	<!-- other js -->
-<!-- 	 <script src="js/sha1.js" type="text/javascript"></script> -->
+	<script src="js/sha1.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		//加密
 		function encoder() {
@@ -61,10 +65,7 @@
     		<h2 class="form-signin-heading"><p>ECA LAB</p> <p>Check in System</p></h2>
     		<input name="username" id="username" type="text" class="form-control" placeholder="Username" required autofocus>
     		<input onchange="encoder()" name="password" id="password" type="password" class="form-control" placeholder="Password" required>
-<!--     		<label class="checkbox">
-        		<input type="checkbox" value="remember-me"> Remember me
-        	</label>
- -->        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
     </div>
     <div class="container" id="footer">
