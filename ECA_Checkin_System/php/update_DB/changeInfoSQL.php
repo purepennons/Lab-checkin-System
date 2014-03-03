@@ -25,7 +25,7 @@
 		if($newPassword == "" ^ $confirmPassword == ""){
 			//新密碼或新密碼確認其中一欄未填寫
 			echo "<script>alert('New Password or Confirm Password is Null!')</script>";
-			echo "<script>document.location.href='changeInfo.php'</script>";
+			echo "<script>history.go(-1)</script>";
 			exit;
 		}else {
 			if($newPassword == "" && $confirmPassword == ""){ //新密碼與密碼確認皆未填寫，執行姓名更新
@@ -38,7 +38,7 @@
 			}else {  
 				if($newPassword != $confirmPassword){
 					echo "<script>alert('New password is not matched with confirm password!')</script>";
-					echo "<script>document.location.href='changeInfo.php'</script>";
+					echo "<script>history.go(-1)</script>";
 					exit;
 				}else {		//新密碼與密碼確認皆填寫，執行密碼修改
 					$sql = sprintf("UPDATE `ACCOUNT` SET `name`='%s',`password`='%s' WHERE username='%s'", mysql_real_escape_string($changename), mysql_real_escape_string($newPassword), mysql_real_escape_string($_SESSION['sessionusername']));
@@ -53,7 +53,7 @@
 		}
 	}else {
 		echo "<script>alert('密碼錯誤')</script>";
-		echo "<script>document.location.href='changeInfo.php'</script>";
+		echo "<script>history.go(-1)</script>";
 		exit;
 	}
 ?>
