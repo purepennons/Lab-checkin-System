@@ -15,6 +15,8 @@
 	$db->query($sql);
 	$sql = sprintf("DELETE FROM `ACCOUNT` WHERE username='%s'", mysql_real_escape_string($deleteUsername));
 	$db->query($sql);
+	unset($_SESSION['sessionChooseUsername']);
+	unset($_SESSION['sessionChooseName']);
 	echo "<script>alert('delete succes!')</script>";
 	echo "<script>document.location.href='../../index.php'</script>";		
 	exit;
